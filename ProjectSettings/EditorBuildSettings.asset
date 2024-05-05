@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/bullet hell.unity
     guid: d3b7a14b5dd02194ead89eac2efdd19f
+  - enabled: 1
+    path: Assets/upgradeScreen.unity
+    guid: 7a8dd5dc6fb34fd48aa20bd365ff91a1
   m_configObjects: {}

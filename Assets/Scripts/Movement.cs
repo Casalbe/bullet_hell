@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    [SerializeField] private float speed;
-    private float defaultSpeed;
-    [SerializeField] private float jumpingPower = 16f;
+    public static float speed = 1;
+    public static float defaultSpeed;
+    public static float jumpingPower = 4f;
     private bool isFacingRight = true;
     bool isGrounded = false;
 

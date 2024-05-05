@@ -27,6 +27,7 @@ public class plantShotTop : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider){
         if(!collider.CompareTag("Enemy") && !collider.CompareTag("Bullet")){
+            Point.pointAmount++;
             Destroy(gameObject);
         }
         

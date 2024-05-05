@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnLeft : MonoBehaviour
 {
+    private float timerSinceLastSpawn;
     private float timer;
     public float cooldown;
     public float maxCooldown;
@@ -21,12 +22,18 @@ public class SpawnLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerSinceLastSpawn += Time.deltaTime;
         timer += Time.deltaTime;
         
-        if(timer > cooldown){
-            timer = 0;
+        if(timerSinceLastSpawn > cooldown){
+            timerSinceLastSpawn = 0;
             spawn(positions[randomNum]);
             randomNum = Random.Range(0, positions.Length);
+
+            if(timer >= 10){
+                minCooldown -= 0.5f;
+                maxCooldown -= 1f;
+            }
             cooldown = Random.Range(minCooldown, maxCooldown);
         }
         

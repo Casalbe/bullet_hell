@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class plant : MonoBehaviour
+public class EggEnemy : MonoBehaviour
 {
     private float timer;
     public GameObject bullet;
     public Transform bulletPos;
-    private int shots = 0;
-    private int maxShots = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +21,6 @@ public class plant : MonoBehaviour
         if(timer > 1){
             timer = 0;
             shoot();
-            shots++;
-        }
-        if(shots == maxShots){
             Destroy(gameObject);
         }
     }

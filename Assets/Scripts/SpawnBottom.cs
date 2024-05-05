@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnRight : MonoBehaviour
+public class SpawnBottom : MonoBehaviour
 {
     private float timerSinceLastSpawn;
     private float timer;
@@ -24,7 +24,7 @@ public class SpawnRight : MonoBehaviour
     {
         timerSinceLastSpawn += Time.deltaTime;
         timer += Time.deltaTime;
-        
+
         if(timer > cooldown){
             timer = 0;
             spawn(positions[randomNum]);
@@ -33,14 +33,14 @@ public class SpawnRight : MonoBehaviour
 
             if(timer >= 10){
                 minCooldown -= 0.5f;
-                maxCooldown -= 1f;
+                maxCooldown -= 0.75f;
             }
         }
         
     }
 
     public void spawn(Transform place){
-        Instantiate(enemy, place.position, Quaternion.Euler(0,0,90));
+        Instantiate(enemy, place.position, Quaternion.identity);
     }
 
 }
