@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Powers : MonoBehaviour
 {
-    public bool screenWipeEnabled = false;
-    public float screenWipeCooldown = 0f;
+    public static bool screenWipeEnabled = false;
+    public static float screenWipeCooldown = 0f;
     public GameObject[] bulletList;
     void Start()
     {
@@ -15,12 +15,15 @@ public class Powers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        screenWipeCooldown -= Time.deltaTime;
+
         if(Input.GetKeyDown("r") && screenWipeEnabled && screenWipeCooldown <= 0){
             bulletList = GameObject.FindGameObjectsWithTag("Bullet");
             for(int i = 0; i < bulletList.Length;i++){
                 Point.pointAmount += bulletList.Length;
                 Destroy(bulletList[i]);
             }
+            screenWipeCooldown = 10;
         }
     }
 }

@@ -9,6 +9,7 @@ public class UpgradeCounter : MonoBehaviour
     public TextMeshProUGUI jumpCounter;
     public TextMeshProUGUI speedCounter;
     public TextMeshProUGUI crouchCounter;
+    public TextMeshProUGUI wipeCounter;
     public TextMeshProUGUI pointText;
 
     void Start()
@@ -16,12 +17,12 @@ public class UpgradeCounter : MonoBehaviour
         if(PlayerMovement.jumpingPower >= 8){
             jumpCounter.text = "Current speed: MAX";
         }else{
-            jumpCounter.text = "Current jumping power: " + PlayerMovement.jumpingPower.ToString();
+            jumpCounter.text = "("+ Buttons.jumpPrice + ")" + "Current jumping power: " + PlayerMovement.jumpingPower.ToString();
         }
         if(PlayerMovement.speed >= 10){
             speedCounter.text = "Current speed: MAX";
         }else{
-            speedCounter.text = "Current speed: " + PlayerMovement.speed.ToString();
+            speedCounter.text = "("+ Buttons.speedPrice + ")" +  "Current speed: " + PlayerMovement.speed.ToString();
         }
         pointText.text = Point.pointAmount.ToString() + " points";
     }
@@ -32,13 +33,25 @@ public class UpgradeCounter : MonoBehaviour
         if(PlayerMovement.jumpingPower >= 8){
             jumpCounter.text = "Current speed: MAX";
         }else{
-            jumpCounter.text = "Current jumping power: " + PlayerMovement.jumpingPower.ToString();
+            jumpCounter.text = "("+ Buttons.jumpPrice + ")" + "Current jumping power: " + PlayerMovement.jumpingPower.ToString();
         }
         if(PlayerMovement.speed >= 10){
             speedCounter.text = "Current speed: MAX";
         }else{
-            speedCounter.text = "Current speed: " + PlayerMovement.speed.ToString();
+            speedCounter.text = "("+ Buttons.speedPrice + ")" +  "Current speed: " + PlayerMovement.speed.ToString();
         }
         pointText.text = Point.pointAmount.ToString() + " points";
+
+        if(PlayerMovement.canCrouch){
+            crouchCounter.text = "Acquired";
+        }else{
+            crouchCounter.text = "(20)";
+        }
+
+        if(Powers.screenWipeEnabled){
+            wipeCounter.text = "Acquired";
+        }else{
+            wipeCounter.text = "(50)";
+        }
     }
 }

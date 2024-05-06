@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public static float jumpingPower = 4f;
     private bool isFacingRight = true;
     bool isGrounded = false;
-
+    public static bool canCrouch = false;
     bool isCrouching = false;
 
     [SerializeField] private Collider2D isGroundedCollider;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-        if (Input.GetKeyDown("down") && isGrounded){
+        if (Input.GetKeyDown("down") && canCrouch && isGrounded){
             isGrounded = false;
             defaultSpeed = speed;
             speed = 0;
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             }
             isCrouching = true;
             
-        } else if (Input.GetKeyUp("down")){
+        } else if (Input.GetKeyUp("down") && canCrouch){
             isCrouching = false;
             isGrounded = true;
             speed = defaultSpeed;

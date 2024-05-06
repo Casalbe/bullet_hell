@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    public double jumpPrice = 10;
-    public double speedPrice = 10;
+    public static double jumpPrice = 10;
+    public static double speedPrice = 10;
     void Start()
     {
         
@@ -42,5 +42,23 @@ public class Buttons : MonoBehaviour
             Point.pointAmount -= speedPrice;
             speedPrice = Math.Floor(speedPrice * 1.5);
         }
+    }
+
+    public void screenWipeEnable(){
+        if(Point.pointAmount >= 50 && !Powers.screenWipeEnabled){
+            Point.pointAmount -= 50;
+            Powers.screenWipeEnabled = true;
+        }
+    }
+
+    public void crouchEnable(){
+        if(Point.pointAmount >= 20 && !PlayerMovement.canCrouch){
+            Point.pointAmount -= 20;
+            PlayerMovement.canCrouch = true;
+        }
+    }
+
+    public void mainMenu(){
+        SceneManager.LoadSceneAsync("Main Menu scene");
     }
 }
